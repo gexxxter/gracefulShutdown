@@ -10,6 +10,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @WebFilter
@@ -17,6 +19,9 @@ import org.springframework.stereotype.Component;
 public class ConnectionHeaderFilter implements Filter {
 
 	private boolean closeConnections = false;
+	
+	@Autowired
+	private Environment env;
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
